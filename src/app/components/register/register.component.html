@@ -1,0 +1,48 @@
+<div class="col-lg-6">
+	<h1>{{title}}</h1>
+
+	<div class="alert alert-success" *ngIf="status=='success'">
+		Registro completado correctamente, registrate  <a [routerLink]="['/login']"> aquí</a>
+	</div>
+
+	<div class="alert alert-danger" *ngIf="status=='error'">
+		No te has registrado correctamente
+	</div>
+
+	<form #registerForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-10">
+		<div class="form-group">
+			<label>Nombre</label>
+			<input type="text" name="name" #name="ngModel" [(ngModel)]="usuario.name" class="form-control" required />
+			<span *ngIf="!name.valid && name.touched">
+				El nombre es obligatorio
+			</span>
+		</div>
+		<div class="form-group">
+			<label>Email</label>
+			<input type="text" name="email" #email="ngModel" [(ngModel)]="usuario.email" class="form-control" required />
+			<span *ngIf="!email.valid && email.touched">
+				El email es obligatorio
+			</span>
+		</div>
+		<div class="form-group">
+			<label>Tel.</label>
+			<input type="text" name="tel" #tel="ngModel" [(ngModel)]="usuario.tel" class="form-control" required />
+			<span *ngIf="!tel.valid && tel.touched">
+				El telefono es obligatorio
+			</span>
+		</div>
+		<div class="form-group">
+			<label>Password</label>
+			<input type="password" name="password" #password="ngModel" [(ngModel)]="usuario.password" class="form-control" required />
+			<span *ngIf="!password.valid && password.touched">
+				El password es obligatorio
+			</span>
+		</div>
+			<input type="radio" value="cuidador" name="type" [(ngModel)]="usuario.type" class="form-control" required> Quiero ser cuidador de mascotas
+      		<input type="radio" value="cliente" name="type" [(ngModel)]="usuario.type" class="form-control" required> Quiero que cuiden a mi mascota
+			<span *ngIf="usuario.type.invalid">
+				El tipo es obligatorio
+			</span>
+		<input type="submit" value="{{title}}" class="btn btn-success" [disabled]="!registerForm.form.valid"/>
+	</form>
+</div>

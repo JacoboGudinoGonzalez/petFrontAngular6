@@ -1,0 +1,43 @@
+<!--<div class="col-lg-8 col-lg-offset-2">
+	<div class="jumbotron text-center">
+		<h2>Cuidador compoent</h2>
+
+		Nombre de cuidador: {{nombre}}
+
+		<button (click)="emitirEvento()">Mostrar en cliente</button>
+	    
+	</div>
+</div>-->
+
+<ul class="nav nav-tabs">
+	<li class="nav-item">
+		<a class="nav-link active" data-toggle="tab" href="#hospedaje">Hospedaje</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" data-toggle="tab" href="#paseo">Paseo</a>
+	</li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+	<div class="tab-pane container active" id="hospedaje">
+		<ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="1" [dayTemplate]="t">
+		</ngb-datepicker>
+
+		<ng-template #t let-date="date" let-focused="focused">
+			<span class="custom-day" [class.focused]="focused" [class.range]="isFrom(date) || isTo(date) || isInside(date) || isHovered(date)"
+			 [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
+				{{ date.day }}
+			</span>
+		</ng-template>
+
+		<div class="form-group">
+			<input class="search-address form-control" placeholder="Ingresa tu dirección o ubicación" autocorrect="off" autocapitalize="off"
+			 spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
+		</div>
+		<agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+			<agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+		</agm-map>
+	</div>
+	<div class="tab-pane container fade" id="paseo">...</div>
+</div>

@@ -1,0 +1,18 @@
+.pointer{
+	cursor:pointer;
+}
+
+.image-for-edit img{
+	width: 60px;
+}
+
+.avatar{
+    border-radius: 50px;
+    overflow: hidden;
+    margin-top: 7px;
+}
+
+.avatar img{
+	width: 40px;
+	height: 40px;
+}
