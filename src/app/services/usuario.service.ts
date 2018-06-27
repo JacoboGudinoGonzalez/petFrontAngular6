@@ -68,6 +68,10 @@ export class UsuarioService{
 	getAllUsers(user){
 		return this._http.get(this.url+"getAllUsers/cliente").map((res:Response) => res.json());
 	}
+
+	getProfile(id){
+		return this._http.get(this.url+"getProfile/"+id).map((res:Response) => res.json());
+	}
 }
 
 

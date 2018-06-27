@@ -26,9 +26,6 @@ export class AppComponent implements DoCheck, OnInit {
 
   ngOnInit(){
   	this.identity = this._usuarioService.getIdentity();
-    $('#btnClic').click(function(){
-      console.log("btnClic");
-    });
   }
 
   ngDoCheck(){

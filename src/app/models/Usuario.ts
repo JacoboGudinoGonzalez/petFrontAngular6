@@ -7,7 +7,8 @@ export class Usuario{
 		public password: string,
 		public image: string,
 		public type: string,
-		public rating: number
+		public rating: number,
+		public description: string,
 	){
 		
 	}

@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit{
 		private _usuarioService: UsuarioService
 		){
 		this.title = 'Login';
-		this.usuario = new Usuario('','','','','','','',0);
+		this.usuario = new Usuario('','','','','','','',0,'');
 	}
 
 	ngOnInit(){
@@ -52,14 +52,14 @@ export class LoginComponent implements OnInit{
 								this.status = 'success';
 								this._router.navigate(['/']);
 							}
-							this.usuario = new Usuario('','','','','','','',0);
+							this.usuario = new Usuario('','','','','','','',0,'');
 						},
 						error =>{
 							console.log(<any>error);
 						}
 					);
 				}
-				this.usuario = new Usuario('','','','','','','',0);
+				this.usuario = new Usuario('','','','','','','',0,'');
 			},
 			error =>{
 				var errorMessage = <any>error;

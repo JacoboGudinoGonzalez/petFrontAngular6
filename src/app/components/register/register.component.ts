@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit{
 		private _usuarioService: UsuarioService
 	){
 		this.title = 'Registro';
-		this.usuario = new Usuario('','','','','','','',0);
+		this.usuario = new Usuario('','','','','','','',0,'');
 	}
 
 	ngOnInit(){
@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit{
 				}else{
 					this.status = 'error';
 				}
-				this.usuario = new Usuario('','','','','','','',0);
+				this.usuario = new Usuario('','','','','','','',0,'');
 			},
 			error =>{
 				console.log(<any>error);

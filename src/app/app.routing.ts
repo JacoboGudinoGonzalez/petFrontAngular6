@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 //Components
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { ClienteComponent } from './components/cliente/cliente.component';
 import { CuidadorComponent } from './components/cuidador/cuidador.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
@@ -13,6 +14,7 @@ import { UsuarioEditComponent } from './components/usuario-edit/usuario-edit.com
 const appRoutes: Routes = [
 	{path: '', component: HomeComponent},
 	{path: '', redirectTo: 'home', pathMatch: 'full'},
+	{path: 'profile', component: ProfileComponent},
 	{path: 'login', component: LoginComponent},
 	{path: 'cliente', component: ClienteComponent},
 	{path: 'cuidador', component: CuidadorComponent},
