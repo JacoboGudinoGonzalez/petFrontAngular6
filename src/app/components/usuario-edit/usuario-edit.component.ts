@@ -1,26 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { Usuario } from '../../models/Usuario';
 import { UsuarioService } from '../../services/usuario.service';
 import { UploadService } from '../../services/upload.service';
 
 @Component({
 	selector: 'usuario-edit',
-	templateUrl: './usuario-edit.component.html',
-	providers:[UsuarioService, UploadService]
+	templateUrl: './usuario-edit.component.html'
 })
-export class UsuarioEditComponent implements OnInit{
+export class UsuarioEditComponent implements OnInit {
 	public title: string;
 	public usuario: Usuario;
-	public identity; 
+	public identity;
 	public token;
 	public status: string;
 	public url: string;
+	public msj: string;
 
 	constructor(
 		private _usuarioService: UsuarioService,
 		private _uploadService: UploadService
-	){
+	) {
 		this.title = 'Mis datos';
 		this.identity = this._usuarioService.getIdentity();
 		this.token = this._usuarioService.getToken();
@@ -28,39 +27,51 @@ export class UsuarioEditComponent implements OnInit{
 		this.url = 'rest/controller/';
 	}
 
-	ngOnInit(){
+	ngOnInit() {
 		console.log(this.identity);
 	}
 
-	onSubmit(){
+	onSubmit() {
 		this._usuarioService.updateUsuario(this.usuario).subscribe(
 			response => {
 
-				if(!response.user){
+				if (!response.user) {
 					this.status = 'error';
-				}else{
+				} else {
 					//this.usuario = response.user;
 					this.status = 'success';
-					localStorage.setItem('identity',JSON.stringify(this.usuario));
+					localStorage.setItem('identity', JSON.stringify(this.usuario));
 
 					//Subir img
-					this._uploadService.makeFileRequest(this.url+'upload/'+this.usuario.id, [],this.filesToUpload,this.token, 'file').
-					then((result: any) =>{
-						this.usuario.image = result.image;
-						localStorage.setItem('identity',JSON.stringify(this.usuario));
-						console.log(this.usuario);
-					});
+					this._uploadService.makeFileRequest(this.url + 'upload/' + this.usuario.id, [], this.filesToUpload, this.token, 'file').
+						then((result: any) => {
+							this.usuario.image = result.image;
+							localStorage.setItem('identity', JSON.stringify(this.usuario));
+						});
+					this.onActivate();
 				}
 			},
-			error =>{
-				console.log(<any>error);
+			error => {
+				this.msj = JSON.parse(<any>error._body).msj;
 				this.status = 'error';
+				this.onActivate();
 			}
 		);
 	}
 
 	public filesToUpload: Array<File>;
-	fileChangeEvent(fileInput: any){
+	fileChangeEvent(fileInput: any) {
 		this.filesToUpload = <Array<File>>fileInput.target.files;
+	}
+
+	onActivate() {
+		let scrollToTop = window.setInterval(() => {
+			let pos = window.pageYOffset;
+			if (pos > 0) {
+				window.scrollTo(1000, pos - 20); // how far to scroll on each step
+			} else {
+				window.clearInterval(scrollToTop);
+			}
+		}, 16);
 	}
 }

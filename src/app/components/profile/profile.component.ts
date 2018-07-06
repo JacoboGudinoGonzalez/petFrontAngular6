@@ -6,8 +6,7 @@ import { UsuarioService } from '../../services/usuario.service';
 @Component({
 	selector: 'profile',
 	templateUrl: './profile.component.html',
-	styleUrls: ['./profile.component.css'],
-	providers: [UsuarioService]
+	styleUrls: ['./profile.component.css']
 })
 
 export class ProfileComponent implements OnInit {

@@ -1,30 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from '../../models/Usuario';
-import { UsuarioService } from '../../services/usuario.service';
+import { Router } from '@angular/router';
 
+import { Usuario } from '../../models/Usuario';
+import { ServicePet } from '../../models/ServicePet';
+import { UsuarioService } from '../../services/usuario.service';
+import { PassDataService } from '../../services/passData.service';
 
 @Component({
-	selector: 'home',
-	templateUrl: './home.component.html',
-	styleUrls: ['./home.component.css']
+	selector: 'select-cuidador',
+	templateUrl: './select-cuidador.component.html',
+	styleUrls: ['./select-cuidador.component.css']
 })
 
-export class HomeComponent implements OnInit {
+export class SelectCuidadorComponent implements OnInit {
 	public title: string;
 	public usuario: Usuario;
 	public identity;
 	public token;
 	public url: string;
-	public userArray;
+    public userArray;
+    public newServicePet: ServicePet;
 
 	constructor(
-		private _usuarioService: UsuarioService
+        private _router: Router,
+        private _usuarioService: UsuarioService,
+        private _passDataService: PassDataService
 	) {
-		this.title = 'HOME';
+		this.title = 'Seleccionar Cuidador';
 		this.url = 'rest/controller/';
 		this.identity = this._usuarioService.getIdentity();
 		this.token = this._usuarioService.getToken();
-		this.usuario = this.identity;
+        this.usuario = this.identity;
+        if(this._passDataService.storage!=undefined){
+            this.newServicePet = this._passDataService.storage.newServicePet;
+        }else{
+            this._router.navigate(["cuidador"]);
+        }
 	}
 
 	ngOnInit() {
@@ -35,7 +46,7 @@ export class HomeComponent implements OnInit {
 		this._usuarioService.getAllUsers(this.usuario).subscribe(
 			response => {
 				this.userArray = response.users;
-				console.log(this.userArray);
+				//console.log(this.userArray);
 			},
 			error => {
 				console.log("error");

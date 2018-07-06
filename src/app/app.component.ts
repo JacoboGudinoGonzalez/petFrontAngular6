@@ -1,8 +1,6 @@
 import { Component, DoCheck, OnInit} from '@angular/core';
 import { UsuarioService } from './services/usuario.service';
-import { Router, ActivatedRoute } from '@angular/router';
-
-import * as $ from 'jquery';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +15,6 @@ export class AppComponent implements DoCheck, OnInit {
 
   constructor(
       private _usuarioService: UsuarioService,
-      private _route: ActivatedRoute,
       private _router: Router
     ){
     this.title= 'PET';

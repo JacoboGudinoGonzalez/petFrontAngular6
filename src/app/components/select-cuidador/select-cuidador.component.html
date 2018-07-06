@@ -1,0 +1,38 @@
+<div class="container">
+    <!-- Bootstrap Grid -->
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <p class="card-text">
+                    {{newServicePet.idUserTo}}
+                </p>
+                <p class="card-text">
+                    {{newServicePet.dateFrom | date:'yyyy-MM-dd'}}
+                </p>
+                <p class="card-text">
+                    {{newServicePet.dateTo | date:'yyyy-MM-dd'}}
+                </p>
+                <p class="card-text">
+                    {{newServicePet.address}}
+                </p>
+                <p class="card-text">
+                    {{newServicePet.message}}
+                </p>
+            </div>
+        </div>
+        <div class="col">
+            <div *ngFor="let user of userArray" class="card">
+                <img src="{{url+'getImageFile/'+user.image}}" alt="{{user.name}}">
+                <p class="card-text">{{user.name}}</p>
+                <p class="card-text">{{user.email}}</p>
+                <p class="card-text">{{user.tel}}</p>
+                <p class="card-text">
+                    <a *ngFor="let item of BlockID(user.rating); let i=index " (click)="setStar(i)">
+                        <i class="fa" [ngClass]="{'fa-star-o':item,'fa-star':!item}"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="col">.col</div>
+    </div>
+</div>

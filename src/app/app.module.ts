@@ -13,10 +13,16 @@ import { CuidadorComponent } from './components/cuidador/cuidador.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UsuarioEditComponent } from './components/usuario-edit/usuario-edit.component';
+import { SelectCuidadorComponent } from './components/select-cuidador/select-cuidador.component';
+
+import { UsuarioService } from './services/usuario.service';
+import { PassDataService } from './services/passData.service';
+import { UploadService } from './services/upload.service';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPopper } from 'angular-popper';
 import { AgmCoreModule } from '@agm/core';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 @NgModule({
@@ -29,7 +35,8 @@ import { AgmCoreModule } from '@agm/core';
     ContactoComponent,
     RegisterComponent,
     LoginComponent,
-    UsuarioEditComponent
+    UsuarioEditComponent,
+    SelectCuidadorComponent
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -42,10 +49,11 @@ import { AgmCoreModule } from '@agm/core';
     HttpModule,
     routing,
     ReactiveFormsModule,
-    NgxPopper
+    NgxPopper,
+    ModalModule.forRoot()
   ],
   providers: [
-    appRoutingProviders
+    appRoutingProviders, PassDataService, UsuarioService, UploadService
   ],
   bootstrap: [AppComponent]
 })

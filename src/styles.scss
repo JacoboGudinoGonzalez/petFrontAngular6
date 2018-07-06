@@ -4,6 +4,24 @@
     -webkit-transition: 0.3s cubic-bezier(0.75, 0, 0.2, 1), color 0.3s ease;
     transition: 0.3s cubic-bezier(0.75, 0, 0.2, 1), color 0.3s ease;
   }
+
+  .pointer{
+    cursor:pointer;
+  }
+  
+  .image-for-edit img{
+    width: 60px;
+  }
+  
+  .avatar{
+      overflow: hidden;
+  }
+  
+  .avatar img{
+    width: 55px;
+      height: 55px;
+      border-radius: 50px;
+  }
   .rela-block {
     display: block;
     position: relative;
@@ -60,7 +78,7 @@
     letter-spacing: 2px;
     font-weight: 400;
     line-height: 24px;
-    background-color: #f4f4f4;
+    background-color: #00585E;
   }
   .blurred {
     -webkit-filter: blur(2px);
@@ -181,6 +199,7 @@
   .nav-container {
     width: 100%;
     max-width: 1400px;
+    background: #FFFFFA;
   }
   .logo {
     font-family: "Yellowtail";
@@ -190,9 +209,10 @@
     line-height: 70px;
     margin: 0 30px;
     cursor: pointer;
+    color: #454445;
   }
   .logo:hover {
-    color: #2ebaae;
+    color: #7394B7;
   }
   .nav-div {
     font-family: "Roboto";
@@ -203,11 +223,12 @@
     height: 70px;
     line-height: 70px;
     margin: 0 10px;
-    color: #999;
+    color: #454445;
   }
   .nav-div li {
     padding: 0 9px;
     cursor: pointer;
+    //text-shadow: 3px 0px 3px #009494;
   }
   .nav-div li:hover {
     color: #2ebaae;
@@ -215,6 +236,20 @@
   .nav-links {
     margin: 0;
     width: 550px;
+  }
+  .dropdown a{
+    color: #454445;
+  }
+  .dropdown a:hover{
+    text-decoration: none;
+    color: #2ebaae;
+  }
+  .nav-div .active{
+    border-bottom: 3px solid orange;
+    color: orange;
+  }
+  .nav-div:focus .active:focus{
+    outline: none;
   }
   .search-container {
     padding-right: 15px;
@@ -475,14 +510,14 @@
   .footer {
     min-height: 240px;
     border-top: 1px solid #d6d6d6;
-    background-color: #fff;
+    background-color: #FFFFFA;
     padding: 30px 40px;
     text-align: center;
     overflow: hidden;
   }
   @media screen and (max-width: 1300px) {
     .container {
-      max-width: 843px;
+      max-width: 1024;
     }
     .overlay-card {
       max-width: 803px;

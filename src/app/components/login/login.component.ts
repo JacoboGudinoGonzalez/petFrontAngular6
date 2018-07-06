@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Usuario } from '../../models/Usuario';
-import { GLOBAL } from '../../services/global';
 import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
 	selector: 'login',
 	templateUrl: './login.component.html',
-	styleUrls: ['./login.component.css'],
-	providers:[UsuarioService]
+	styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
 	public title: string;
@@ -18,7 +16,6 @@ export class LoginComponent implements OnInit{
 	public token;
 
 	constructor(
-		private _route: ActivatedRoute,
 		private _router: Router,
 		private _usuarioService: UsuarioService
 		){

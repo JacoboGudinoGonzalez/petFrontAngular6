@@ -10,6 +10,7 @@ import { CuidadorComponent } from './components/cuidador/cuidador.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UsuarioEditComponent } from './components/usuario-edit/usuario-edit.component';
+import { SelectCuidadorComponent } from './components/select-cuidador/select-cuidador.component';
 
 const appRoutes: Routes = [
 	{path: '', component: HomeComponent},
@@ -21,6 +22,7 @@ const appRoutes: Routes = [
 	{path: 'contacto', component: ContactoComponent},
 	{path: 'registro', component: RegisterComponent},
 	{path: 'mis-datos', component: UsuarioEditComponent},
+	{path: 'selecciona-cuidador', component: SelectCuidadorComponent},
 	{path: '**', component: HomeComponent}
 ];
 

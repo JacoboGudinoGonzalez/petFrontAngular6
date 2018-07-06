@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Usuario } from '../../models/Usuario';
-import { GLOBAL } from '../../services/global';
 import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
 	selector: 'register',
-	templateUrl: './register.component.html',
-	providers:[UsuarioService]
+	templateUrl: './register.component.html'
 	//styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit{
